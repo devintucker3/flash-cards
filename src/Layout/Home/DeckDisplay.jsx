@@ -10,8 +10,8 @@ function DecksDisplay({decks, setDecks, error, setError}) {
                     <div class="card-body">
                         <h5 className="card-title">{deck.name}</h5>
                         <p className="card-text">{deck.description}</p>
-                        <Link className="btn" to={`/decks/${deck.id}`}>View</Link>
-                        <Link className="btn" to={`/decks/${deck.id}/study`}>Study</Link>
+                        <Link className="btn btn-secondary mr-4" to={`/decks/${deck.id}`}>View</Link>
+                        <Link className="btn btn-primary mr-4" to={`/decks/${deck.id}/study`}>Study</Link>
                         <DeleteDeckButton decks={decks} setDecks={setDecks} error={error} setError={setError} deckId={deck.id} />
                     </div>
                 </div>

@@ -12,12 +12,3 @@ function Header() {
 }
 
 export default Header;
-
-/*
-useEffect(() => {
-  const controller = new AbortController();
-
-  GivenAPIFunction(param, controller.signal).then(something);
-  return () => controller.abort();
-}, []);
-*/

@@ -26,7 +26,7 @@ function Home({decks, setDecks, error, setError}) {
     
     return (
         <Fragment>
-            <Link to="/decks/new">Create Deck</Link>
+            <Link className="btn btn-secondary mb-4" to="/decks/new">Create Deck</Link>
             <DecksDisplay decks={decks} setDecks={setDecks} error={error} setError={setError} />
         </Fragment>
     );

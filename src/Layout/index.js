@@ -1,8 +1,9 @@
 import React, { Fragment, useState } from "react";
 import {Route, Switch} from "react-router-dom";
-import Header from "./Header/Header";
+import Header from "./Home/Header";
 import NotFound from "./Error/NotFound";
 import Home from "./Home/Home";
+import ViewDeck from "./ViewDeck/ViewDeck";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
@@ -11,9 +12,12 @@ function Layout() {
   return (
     <Fragment>
       <Header />
-      <div className="container">
+      <main className="container">
         {/* TODO: Implement the screen starting here */}
         <Switch>
+          <Route path="/decks/:deckId">
+            <ViewDeck decks={decks} setDecks={setDecks} error={error} setError={setError} />
+          </Route>
           <Route exact path="/">
             <Home decks={decks} setDecks={setDecks} error={error} setError={setError} />
           </Route>
@@ -21,7 +25,7 @@ function Layout() {
             <NotFound />
           </Route>
         </Switch>
-      </div>
+      </main>
     </Fragment>
   );
 }
