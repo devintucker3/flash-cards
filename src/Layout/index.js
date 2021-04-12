@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
 import {Route, Switch} from "react-router-dom";
-import Header from "./Header";
-import NotFound from "./NotFound";
-import Home from "../Home/Home";
+import Header from "./Header/Header";
+import NotFound from "./Error/NotFound";
+import Home from "./Home/Home";
 
 function Layout() {
   const [decks, setDecks] = useState([]);

@@ -1,7 +1,8 @@
 import React, {Fragment, useEffect} from "react";
 import { Link } from "react-router-dom";
-import {listDecks} from "../utils/api/index";
+import {listDecks} from "../../utils/api/index";
 import DecksDisplay from "./DeckDisplay";
+import Error from "../Error/Error";
 
 
 function Home({decks, setDecks, error, setError}) {
@@ -18,6 +19,10 @@ function Home({decks, setDecks, error, setError}) {
 
         return () => abortController.abort();
     }, []);
+
+    if (error) {
+        return <Error setError={setError} />
+    }
     
     return (
         <Fragment>
