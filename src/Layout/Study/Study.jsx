@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from "react";
-import { useRouteMatch } from "react-router";
 import Error from "../Error/Error";
 import Cards from "./Cards";
 import NeedMoreCards from "./NeedMoreCards";
@@ -9,7 +8,6 @@ import StudyNav from "./StudyNav";
 function Study({singleDeck, deckId, error, setError}) {
     const [frontView, setFrontView] = useState(true);
     const [index, setIndex] = useState(0);
-    const {url} = useRouteMatch();
 
     if (error) {
         return <Error setError={setError} />
@@ -24,7 +22,7 @@ function Study({singleDeck, deckId, error, setError}) {
                 singleDeck.cards.length > 2 ? (
                     <Cards singleDeck={singleDeck} frontView={frontView} setFrontView={setFrontView} index={index} setIndex={setIndex} />
                 ) : (
-                    <NeedMoreCards singleDeck={singleDeck} url={url} />
+                    <NeedMoreCards singleDeck={singleDeck} />
                 )
             ) : null}
         </Fragment>
