@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import Error from "../Error/Error";
-import Cards from "./Cards";
+import StudyCards from "./StudyCards";
 import NeedMoreCards from "./NeedMoreCards";
 import StudyNav from "./StudyNav";
 
@@ -20,7 +20,7 @@ function Study({singleDeck, deckId, error, setError}) {
             <h2>{singleDeck.name}</h2>     
             {Object.keys(singleDeck).length ? (
                 singleDeck.cards.length > 2 ? (
-                    <Cards singleDeck={singleDeck} frontView={frontView} setFrontView={setFrontView} index={index} setIndex={setIndex} />
+                    <StudyCards singleDeck={singleDeck} frontView={frontView} setFrontView={setFrontView} index={index} setIndex={setIndex} />
                 ) : (
                     <NeedMoreCards singleDeck={singleDeck} />
                 )

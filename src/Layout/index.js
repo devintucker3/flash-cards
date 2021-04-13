@@ -4,6 +4,7 @@ import Header from "./Home/Header";
 import NotFound from "./Error/NotFound";
 import Home from "./Home/Home";
 import ViewDeck from "./ViewDeck/ViewDeck";
+import CreateDeck from "./Home/CreateDeck";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
@@ -15,6 +16,9 @@ function Layout() {
       <main className="container">
         {/* TODO: Implement the screen starting here */}
         <Switch>
+          <Route path="/decks/new">
+            <CreateDeck decks={decks} setDecks={setDecks} error={error} setError={setError} />
+          </Route>
           <Route path="/decks/:deckId">
             <ViewDeck decks={decks} setDecks={setDecks} error={error} setError={setError} />
           </Route>
