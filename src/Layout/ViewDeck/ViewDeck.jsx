@@ -6,6 +6,7 @@ import ViewDeckNav from "./ViewDeckNav";
 import Deck from "./ManageDeck/Deck";
 import Cards from "./ManageCards/Cards";
 import EditDeck from "./ManageDeck/EditDeck";
+import AddOrEditCard from "./ManageCards/AddOrEditCard";
 
 function ViewDeck({decks, setDecks, error, setError}) {
     const [singleDeck, setSingleDeck] = useState({});
@@ -23,6 +24,14 @@ function ViewDeck({decks, setDecks, error, setError}) {
     return (
         <Fragment>
             <Switch>
+                <Route path={`${url}/cards/:cardId/edit`}>
+                    <AddOrEditCard singleDeck={singleDeck} setSingleDeck={setSingleDeck} error={error} setError={setError} deckId={deckId} deckUrl={url} 
+                        edit={true} />
+                </Route>
+                <Route path={`${url}/cards/new`}>
+                    <AddOrEditCard singleDeck={singleDeck} setSingleDeck={setSingleDeck} error={error} setError={setError} deckId={deckId} deckUrl={url} 
+                        edit={false} />
+                </Route>
                 <Route path={`${url}/edit`}>
                     <EditDeck singleDeck={singleDeck} setSingleDeck={setSingleDeck} error={error} setError={setError} deckUrl={url} />
                 </Route>
