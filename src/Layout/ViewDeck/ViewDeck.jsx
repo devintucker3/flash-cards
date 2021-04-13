@@ -5,6 +5,7 @@ import Study from "../Study/Study";
 import ViewDeckNav from "./ViewDeckNav";
 import Deck from "./ManageDeck/Deck";
 import Cards from "./ManageCards/Cards";
+import EditDeck from "./ManageDeck/EditDeck";
 
 function ViewDeck({decks, setDecks, error, setError}) {
     const [singleDeck, setSingleDeck] = useState({});
@@ -22,6 +23,9 @@ function ViewDeck({decks, setDecks, error, setError}) {
     return (
         <Fragment>
             <Switch>
+                <Route path={`${url}/edit`}>
+                    <EditDeck singleDeck={singleDeck} setSingleDeck={setSingleDeck} error={error} setError={setError} deckUrl={url} />
+                </Route>
                 <Route path={`${url}/study`}>
                     <Study deckId={deckId} singleDeck={singleDeck} setSingleDeck={setSingleDeck} error={error} setError={setError} />
                 </Route>
