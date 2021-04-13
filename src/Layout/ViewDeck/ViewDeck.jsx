@@ -1,7 +1,10 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { Route, Switch, useRouteMatch } from "react-router";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { readDeck } from "../../utils/api/index";
 import Study from "../Study/Study";
+import ViewDeckNav from "./ViewDeckNav";
+import Deck from "./ManageDeck/Deck";
+import Cards from "./ManageCards/Cards";
 
 function ViewDeck({decks, setDecks, error, setError}) {
     const [singleDeck, setSingleDeck] = useState({});
@@ -21,6 +24,18 @@ function ViewDeck({decks, setDecks, error, setError}) {
             <Switch>
                 <Route path={`${url}/study`}>
                     <Study deckId={deckId} singleDeck={singleDeck} setSingleDeck={setSingleDeck} error={error} setError={setError} />
+                </Route>
+                <Route exact path={url}>
+                    <ViewDeckNav singleDeck={singleDeck} />
+                    <Deck singleDeck={singleDeck} decks={decks} setDecks={setDecks} error={error} setError={setError} deckId={deckId} />
+                    {Object.keys(singleDeck).length > 0 ? (
+                        singleDeck.cards.length > 0 ? (
+                            <h2>Cards</h2>
+                        ) : (
+                            <h2>No cards in this deck yet.</h2>
+                        )
+                    ) : null}
+                    <Cards singleDeck={singleDeck} setSingleDeck={setSingleDeck} error={error} setError={setError} url={url} />
                 </Route>
             </Switch>
         </Fragment>
